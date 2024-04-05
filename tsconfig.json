@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "listFiles": true,
-    "module": "NodeNext",
+    "module": "ES2022",
     "target": "ES2022",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "Bundler",
     "esModuleInterop": false,
     "lib": ["ES2022", "DOM", "WebWorker"],
     "allowJs": false,
@@ -17,8 +17,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
     "noImplicitAny": false,
     "declaration": true,
     "declarationDir": "dist",
@@ -26,7 +24,7 @@
   },
   "include": [
     "example",
-    "src/**/*",
+    "src/index.ts",
     "test",
     "lib.es5.d.ts"
   ]

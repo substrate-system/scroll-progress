@@ -66,6 +66,64 @@ Link to the minified file in HTML:
 <script type="module" src="./scroll-progress.min.js"></script>
 ```
 
+## examples
+
+### JS
+
+```js
+// index.ts
+import Tonic from '@bicycle-codes/tonic'
+import { ScrollProgress } from '@bicycle-codes/scroll-progress'
+import './index.css'
+import '@bicycle-codes/scroll-progress'
+
+function ScrollExample () {
+    return this.html`
+        <scroll-progress class="scroll example" id="example"></scroll-progress>
+    `
+}
+
+Tonic.add(ScrollProgress)
+Tonic.add(ScrollExample)
+
+/*
+
+in HTML, you would link to your compiled file, then use the root
+element as an HTML element:
+<div id="root">
+    <scroll-example></scroll-example>
+</div>
+<script type="module" src="./index.ts"></script>
+
+*/
+```
+
+### HTML
+First copy a bundled file to a place where your webserver can access it.
+
+```sh
+cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.js
+```
+
+Then include a script tag in HTML, and use the component like any other HTML element.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+</head>
+<body>
+    <div id="root">
+        <scroll-progress></scroll-progress>
+    </div>
+    <script type="module" src="./scroll-progress.ts"></script>
+</body>
+</html>
+```
+
 ## develop
 
 Start a localhost server:

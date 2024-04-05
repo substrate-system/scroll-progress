@@ -1,6 +1,7 @@
 {
     "extends": "./tsconfig.json",
     "exclude": [
+        "./src/bundle.ts",
         "example",
         "test"
     ]
