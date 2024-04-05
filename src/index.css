@@ -3,7 +3,7 @@
     --scroll: 0;
 }
 
-.scroll-position {
+.scroll-progress {
     min-height: 10px;
     width: var(--scroll);
     position: fixed;

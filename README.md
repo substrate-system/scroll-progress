@@ -66,6 +66,15 @@ Link to the minified file in HTML:
 <script type="module" src="./scroll-progress.min.js"></script>
 ```
 
+## css
+Override the variable `--scroll-progress-color` to customize the color.
+
+```css
+.scroll-progress {
+    --scroll-progress-color: pink;
+}
+```
+
 ## examples
 
 ### JS
@@ -74,7 +83,7 @@ Link to the minified file in HTML:
 // index.ts
 import Tonic from '@bicycle-codes/tonic'
 import { ScrollProgress } from '@bicycle-codes/scroll-progress'
-import './index.css'
+import '@bicycle-codes/scroll-progress.css'
 import '@bicycle-codes/scroll-progress'
 
 function ScrollExample () {
