@@ -17,7 +17,7 @@ npm i -S @bicycle-codes/scroll-progress
 You've got options.
 
 ### Bundler
-Use this with a bundler by calling `import` and `Tonic.add`:
+Use this with a bundler by using `import` syntax, and calling and `Tonic.add`:
 
 ```js
 import Tonic from '@bicycle-codes/tonic'
