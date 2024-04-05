@@ -48,8 +48,6 @@ export class ScrollProgress extends Tonic {
             .filter(Boolean)
             .join(' ')
 
-        console.log('classes', classes)
-
         // @ts-expect-error broken upstream
         return this.html`<div class="${classes}"></div>`
     }
