@@ -1,7 +1,11 @@
 import { test } from '@bicycle-codes/tapzero'
-import { example } from '../src/index.js'
+import { ScrollProgress } from '../src/index.js'
+import Tonic from '@bicycle-codes/tonic'
+Tonic.add(ScrollProgress)
 
 test('example', async t => {
-    t.ok('ok', 'should be an example')
-    example()
+    document.body.innerHTML = `
+        <scroll-progress></scroll-progress>
+    `
+    t.ok(document.querySelector('scroll-progress'), 'should find the element')
 })
