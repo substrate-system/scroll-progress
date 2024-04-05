@@ -18,7 +18,6 @@ export class ScrollProgress extends Tonic {
             // this is for if you scroll quickly, faster than the raf,
             // we will end up with a value for --scroll, even though we
             // are at 0
-            // if (!this.next) {
             if (!this.ticking) {
                 this.next = () => setTimeout(() => {
                     const offset = (window.scrollY /
@@ -54,9 +53,3 @@ export class ScrollProgress extends Tonic {
         return this.html`<div class="${classes}"></div>`
     }
 }
-
-// function scrollTop () {
-//     return (document.documentElement.clientHeight ?
-//         document.documentElement.scrollTop :
-//         document.body.scrollTop)
-// }
