@@ -1,0 +1,8 @@
+.scroll-position {
+    min-height: 10px;
+    width: var(--scroll);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: pink;
+}
