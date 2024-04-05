@@ -27,7 +27,7 @@ export class ScrollProgress extends Tonic {
                     this.style.setProperty('--scroll',
                         (Math.round(offset * 100 * 100) / 100 + 'vw'))
                     this.next = null
-                }, 20)
+                }, 50)
             }
 
             const offset = (window.scrollY /
