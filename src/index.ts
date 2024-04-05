@@ -2,22 +2,24 @@ import Tonic from '@bicycle-codes/tonic'
 import { rafScroll } from '@bicycle-codes/raf-scroll'
 
 export class ScrollProgress extends Tonic {
-    state:{ initScroll:number } = { initScroll: 0 }
     next:(()=>any)|null = null
+    ticking = false
 
     constructor () {
         super()
-        this.state.initScroll = scrollTop()
+        const offset = (window.scrollY /
+            (document.body.offsetHeight - window.innerHeight))
+        // @ts-expect-error broken upstream
+        this.style.setProperty('--scroll',
+            (Math.round(offset * 100 * 100) / 100 + 'vw'))
 
         // listen for scrolling
         rafScroll(() => {
-            const scrolled = scrollTop()
-            if (this.state.initScroll === scrolled) return
-
             // this is for if you scroll quickly, faster than the raf,
             // we will end up with a value for --scroll, even though we
             // are at 0
-            if (!this.next) {
+            // if (!this.next) {
+            if (!this.ticking) {
                 this.next = () => setTimeout(() => {
                     const offset = (window.scrollY /
                         (document.body.offsetHeight - window.innerHeight))
@@ -26,8 +28,8 @@ export class ScrollProgress extends Tonic {
                     // @ts-expect-error broken upstream
                     this.style.setProperty('--scroll',
                         (Math.round(offset * 100 * 100) / 100 + 'vw'))
-                    this.next = null
-                }, 50)
+                    this.ticking = false
+                }, 20)
             }
 
             const offset = (window.scrollY /
@@ -37,7 +39,7 @@ export class ScrollProgress extends Tonic {
             this.style.setProperty('--scroll',
                 (Math.round(offset * 100 * 100) / 100 + 'vw'))
 
-            this.next()
+            this.next && this.next()
         })
     }
 
@@ -53,8 +55,8 @@ export class ScrollProgress extends Tonic {
     }
 }
 
-function scrollTop () {
-    return (document.documentElement.clientHeight ?
-        document.documentElement.scrollTop :
-        document.body.scrollTop)
-}
+// function scrollTop () {
+//     return (document.documentElement.clientHeight ?
+//         document.documentElement.scrollTop :
+//         document.body.scrollTop)
+// }
