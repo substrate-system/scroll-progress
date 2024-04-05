@@ -65,3 +65,11 @@ Link to the minified file in HTML:
 </div>
 <script type="module" src="./scroll-progress.min.js"></script>
 ```
+
+## develop
+
+Start a localhost server:
+
+```sh
+npm start
+```
