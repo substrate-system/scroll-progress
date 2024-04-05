@@ -23,15 +23,17 @@ export class ScrollProgress extends Tonic {
                         (document.body.offsetHeight - window.innerHeight))
 
                     // round to 2 decimal places
+                    // @ts-expect-error broken upstream
                     this.style.setProperty('--scroll',
                         (Math.round(offset * 100 * 100) / 100 + 'vw'))
                     this.next = null
-                }, 10)
+                }, 20)
             }
 
             const offset = (window.scrollY /
                 (document.body.offsetHeight - window.innerHeight))
 
+            // @ts-expect-error broken upstream
             this.style.setProperty('--scroll',
                 (Math.round(offset * 100 * 100) / 100 + 'vw'))
 
@@ -41,12 +43,14 @@ export class ScrollProgress extends Tonic {
 
     render () {
         const classes = (['scroll-position'])
+            // @ts-expect-error broken upstream
             .concat((this.props.class || '').split(' '))
             .filter(Boolean)
             .join(' ')
 
         console.log('classes', classes)
 
+        // @ts-expect-error broken upstream
         return this.html`<div class="${classes}"></div>`
     }
 }

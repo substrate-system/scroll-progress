@@ -12,3 +12,54 @@ npm i -S @bicycle-codes/scroll-progress
 ```
 
 ## use
+You've got options.
+
+### Bundler
+Use this with a bundler by calling `import` and `Tonic.add`:
+
+```js
+import Tonic from '@bicycle-codes/tonic'
+import { ScrollProgress } from '@bicycle-codes/scroll-progress'
+import '@bicycle-codes/scroll-progress/index.css'
+
+function ScrollExample () {
+    return this.html`
+        <scroll-progress class="scroll example" id="example"></scroll-progress>
+    `
+}
+
+Tonic.add(ScrollProgress)
+Tonic.add(ScrollExample)
+```
+
+### pre-bundled
+First copy the bundled file to a location that is accessible to your web server:
+
+```sh
+cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.js ./public/scroll-progress.js
+```
+
+Then link to the bundled file, and you can use as an html element.
+
+```html
+<body>
+    <scroll-example></scroll-example>
+</div>
+<script type="module" src="./scroll-progress.js"></script>
+```
+
+### pre-bundled + minifed
+Copy the bundled and minified file to a location that is accessible to your web server:
+
+```sh
+cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.min.js
+```
+
+Link to the bundled file in HTML
+
+```html
+<body>
+    <scroll-example></scroll-example>
+</div>
+<script type="module" src="./scroll-progress.min.js"></script>
+```

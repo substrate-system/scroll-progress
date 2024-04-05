@@ -1,7 +1,12 @@
 {
-  "private": true,
-  "type": "module",
+  "name": "@bicycle-codes/scroll-progress",
   "version": "0.0.0",
+  "description": "A webcomponent that shows scroll progress",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "type": "module",
   "main": "dist/index.js",
   "files": [
     "./dist/*"
@@ -13,7 +18,10 @@
     "test-tape-run": "cat test/index.html | tape-run --input=html --static=test | tap-arc",
     "build-cjs": "esbuild src/*.ts --format=cjs --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.cjs --sourcemap",
     "build-esm": "tsc --project tsconfig.build.json",
-    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm",
+    "build-bundle": "esbuild --keep-names --bundle --tsconfig=tsconfig.build.json --outfile=./dist/index.bundle.js ./src/bundle.ts",
+    "build-bundle:min": "esbuild --keep-names --bundle --tsconfig=tsconfig.build.json --minify --outfile=./dist/index.bundle.min.js ./src/bundle.ts",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-bundle && npm run build-bundle:min",
+    "build-css": "cp ./src/index.css dist",
     "start": "vite",
     "preversion": "npm run lint",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md",
@@ -44,6 +52,15 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./*.css": [
+      "./dist/index.css"
+    ],
+    "./bundle": [
+      "./dist/index.bundle.js"
+    ],
+    "./min": [
+      "./dist/index.bundle.min.js"
+    ],
     "./*": {
       "import": [
         "./dist/*.js",
@@ -56,5 +73,19 @@
     }
   },
   "author": "nichoth <nichoth@gmail.com> (https://nichoth.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bicycle-codes/scroll-progress.git"
+  },
+  "keywords": [
+    "scroll",
+    "progress",
+    "component"
+  ],
+  "bugs": {
+    "url": "https://github.com/bicycle-codes/scroll-progress/issues"
+  },
+  "homepage": "https://github.com/bicycle-codes/scroll-progress#readme"
 }
