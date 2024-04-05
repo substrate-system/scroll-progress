@@ -128,7 +128,7 @@ Then include a script tag in HTML, and use the component like any other HTML ele
     <div id="root">
         <scroll-progress></scroll-progress>
     </div>
-    <script type="module" src="./scroll-progress.ts"></script>
+    <script type="module" src="./scroll-progress.js"></script>
 </body>
 </html>
 ```
