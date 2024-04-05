@@ -57,7 +57,7 @@ Copy the bundled and minified file to a location that is accessible to your web 
 cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.min.js
 ```
 
-Link to the bundled file in HTML
+Link to the minified file in HTML:
 
 ```html
 <body>
