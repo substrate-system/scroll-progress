@@ -9,7 +9,7 @@ export class ScrollProgress extends Tonic {
         super()
         const offset = (window.scrollY /
             (document.body.offsetHeight - window.innerHeight))
-        // @ts-expect-error broken upstream
+
         this.style.setProperty('--scroll',
             (Math.round(offset * 100 * 100) / 100 + 'vw'))
 
@@ -24,7 +24,6 @@ export class ScrollProgress extends Tonic {
                         (document.body.offsetHeight - window.innerHeight))
 
                     // round to 2 decimal places
-                    // @ts-expect-error broken upstream
                     this.style.setProperty('--scroll',
                         (Math.round(offset * 100 * 100) / 100 + 'vw'))
                     this.ticking = false
@@ -36,7 +35,6 @@ export class ScrollProgress extends Tonic {
             const offset = (window.scrollY /
                 (document.body.offsetHeight - window.innerHeight))
 
-            // @ts-expect-error broken upstream
             this.style.setProperty('--scroll',
                 (Math.round(offset * 100 * 100) / 100 + 'vw'))
 
@@ -51,7 +49,6 @@ export class ScrollProgress extends Tonic {
             .filter(Boolean)
             .join(' ')
 
-        // @ts-expect-error broken upstream
         return this.html`<div class="${classes}"></div>`
     }
 }
