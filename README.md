@@ -9,7 +9,7 @@ A progress bar that shows how far down the page you have scrolled, implemented a
 
 ## demonstration
 
-See [bicycle-codes.github.io/scroll-progress](https://bicycle-codes.github.io/scroll-progress/)
+See [bicycle-codes.github.io/scroll-progress](https://bicycle-codes.github.io/scroll-progress/) for an example with the default CSS.
 
 ## install
 
