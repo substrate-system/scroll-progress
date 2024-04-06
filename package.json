@@ -20,6 +20,7 @@
     "build-esm": "tsc --project tsconfig.build.json",
     "build-bundle": "esbuild --keep-names --bundle --tsconfig=tsconfig.build.json --outfile=./dist/index.bundle.js ./src/bundle.ts",
     "build-bundle:min": "esbuild --keep-names --bundle --tsconfig=tsconfig.build.json --minify --outfile=./dist/index.bundle.min.js ./src/bundle.ts",
+    "build-example": "vite build",
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-bundle && npm run build-bundle:min && npm run build-css",
     "build-css": "cp ./src/index.css dist",
     "start": "vite",
