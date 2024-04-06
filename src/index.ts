@@ -29,6 +29,8 @@ export class ScrollProgress extends Tonic {
                         (Math.round(offset * 100 * 100) / 100 + 'vw'))
                     this.ticking = false
                 }, 20)
+
+                this.ticking = true
             }
 
             const offset = (window.scrollY /
