@@ -27,7 +27,7 @@
     "preversion": "npm run lint",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md",
     "postversion": "git push --follow-tags && npm publish",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && gh-release -y"
   },
   "exports": {
     ".": {
@@ -67,6 +67,7 @@
     "esbuild": "^0.20.1",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
+    "gh-release": "^7.0.2",
     "postcss-nesting": "^12.0.3",
     "tap-arc": "^1.2.2",
     "tape-run": "^11.0.0",
