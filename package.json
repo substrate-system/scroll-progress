@@ -1,6 +1,6 @@
 {
   "name": "@bicycle-codes/scroll-progress",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A webcomponent that shows scroll progress",
   "directories": {
     "example": "example",
