@@ -49,7 +49,7 @@ Then link to the bundled file, and you can use as an html element.
 
 ```html
 <body>
-    <scroll-example></scroll-example>
+    <scroll-progress></scroll-progress>
 </div>
 <script type="module" src="./scroll-progress.js"></script>
 ```
@@ -65,7 +65,7 @@ Link to the minified file in HTML:
 
 ```html
 <body>
-    <scroll-example></scroll-example>
+    <scroll-progress></scroll-progress>
 </div>
 <script type="module" src="./scroll-progress.min.js"></script>
 ```
