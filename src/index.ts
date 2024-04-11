@@ -44,7 +44,6 @@ export class ScrollProgress extends Tonic {
 
     render () {
         const classes = (['scroll-progress'])
-            // @ts-expect-error broken upstream
             .concat((this.props.class || '').split(' '))
             .filter(Boolean)
             .join(' ')
