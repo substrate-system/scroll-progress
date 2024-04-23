@@ -88,7 +88,6 @@ Override the variable `--scroll-progress-color` to customize the color.
 import Tonic from '@bicycle-codes/tonic'
 import { ScrollProgress } from '@bicycle-codes/scroll-progress'
 import '@bicycle-codes/scroll-progress.css'
-import '@bicycle-codes/scroll-progress'
 
 function ScrollExample () {
     return this.html`
