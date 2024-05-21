@@ -1,7 +1,5 @@
 import { test } from '@bicycle-codes/tapzero'
-import { ScrollProgress } from '../src/index.js'
-import Tonic from '@bicycle-codes/tonic'
-Tonic.add(ScrollProgress)
+import '../src/index.js'
 
 test('example', async t => {
     document.body.innerHTML = `
