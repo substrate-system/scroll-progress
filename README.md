@@ -21,25 +21,17 @@ npm i -S @bicycle-codes/scroll-progress
 You've got options.
 
 ### Bundler
-Use this with a bundler by using `import` syntax, and calling and `Tonic.add`:
+Use this with a bundler by using `import` syntax.
 
 ```js
-import Tonic from '@bicycle-codes/tonic'
-import { ScrollProgress } from '@bicycle-codes/scroll-progress'
-import '@bicycle-codes/scroll-progress/index.css'
-
-function ScrollExample () {
-    return this.html`
-        <scroll-progress class="scroll example" id="example"></scroll-progress>
-    `
-}
-
-Tonic.add(ScrollProgress)
-Tonic.add(ScrollExample)
+import '@bicycle-codes/scroll-progress'
+import '@bicycle-codes/scroll-progress/css'
+// or minified css
+import '@bicycle-codes/scroll-progress/min/css'
 ```
 
 ### pre-bundled
-First copy the bundled file to a location that is accessible to your web server:
+This is the progress component and its one dependency, [raf-scroll](https://github.com/bicycle-codes/raf-scroll), combined into a single file. First copy the bundled file to a location that is accessible to your web server:
 
 ```sh
 cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.js ./public/scroll-progress.js
@@ -81,40 +73,28 @@ Override the variable `--scroll-progress-color` to customize the color.
 
 ## examples
 
-### JS
-
 ```js
-// index.ts
-import Tonic from '@bicycle-codes/tonic'
+// index.js
 import { ScrollProgress } from '@bicycle-codes/scroll-progress'
-import '@bicycle-codes/scroll-progress.css'
-
-function ScrollExample () {
-    return this.html`
-        <scroll-progress class="scroll example" id="example"></scroll-progress>
-    `
-}
-
-Tonic.add(ScrollProgress)
-Tonic.add(ScrollExample)
-
-/*
-
-in HTML, you would link to your compiled file, then use the root
-element as an HTML element:
-<div id="root">
-    <scroll-example></scroll-example>
-</div>
-<script type="module" src="./index.ts"></script>
-
-*/
 ```
 
-### HTML
+```html
+<!-- index.html -->
+<body>
+    <div id="root">
+        <scroll-example></scroll-example>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+</body>
+```
+
+### pre-bundled
 First copy a bundled file to a place where your webserver can access it.
 
 ```sh
 cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.js
+cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.min.css ./public/scroll-progress.css
 ```
 
 Then include a script tag in HTML, and use the component like any other HTML element.
@@ -125,12 +105,18 @@ Then include a script tag in HTML, and use the component like any other HTML ele
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link to the css -->
+    <link rel="stylesheet" href="./scroll-progress.css">
     <title>Example</title>
 </head>
+
 <body>
     <div id="root">
         <scroll-progress></scroll-progress>
     </div>
+
+    <!-- link to JS -->
     <script type="module" src="./scroll-progress.js"></script>
 </body>
 </html>
