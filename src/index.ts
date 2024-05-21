@@ -1,14 +1,15 @@
-import Tonic from '@bicycle-codes/tonic'
 import { rafScroll } from '@bicycle-codes/raf-scroll'
 
-export class ScrollProgress extends Tonic {
+export class ScrollProgress extends HTMLElement {
     next:(()=>any)|null = null
     ticking = false
 
     constructor () {
         super()
+        const classes = 'scroll-progress'
+
         const offset = (window.scrollY /
-            (document.body.offsetHeight - window.innerHeight))
+        (document.body.offsetHeight - window.innerHeight))
 
         this.style.setProperty('--scroll',
             (Math.round(offset * 100 * 100) / 100 + 'vw'))
@@ -40,14 +41,9 @@ export class ScrollProgress extends Tonic {
 
             this.next && this.next()
         })
-    }
 
-    render () {
-        const classes = (['scroll-progress'])
-            .concat((this.props.class || '').split(' '))
-            .filter(Boolean)
-            .join(' ')
-
-        return this.html`<div class="${classes}"></div>`
+        this.innerHTML = `<div class=${classes}></div>`
     }
 }
+
+customElements.define('scroll-progress', ScrollProgress)

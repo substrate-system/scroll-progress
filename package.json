@@ -18,11 +18,12 @@
     "test-tape-run": "cat test/index.html | tape-run --input=html --static=test | tap-arc",
     "build-cjs": "esbuild src/index.ts --format=cjs --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.cjs --sourcemap",
     "build-esm": "tsc --project tsconfig.build.json",
-    "build-bundle": "esbuild --keep-names --bundle --tsconfig=tsconfig.build.json --outfile=./dist/index.bundle.js ./src/bundle.ts",
-    "build-bundle:min": "esbuild --keep-names --bundle --tsconfig=tsconfig.build.json --minify --outfile=./dist/index.bundle.min.js ./src/bundle.ts",
+    "build-bundle": "esbuild ./src/index.ts --keep-names --bundle --tsconfig=tsconfig.build.json --outfile=./dist/index.bundle.js",
+    "build-bundle:min": "esbuild ./src/index.ts --keep-names --bundle --tsconfig=tsconfig.build.json --minify --outfile=./dist/index.bundle.min.js",
     "build-example": "vite --base \"/scroll-progress/\" build",
-    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-bundle && npm run build-bundle:min && npm run build-css",
-    "build-css": "cp ./src/index.css dist",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-bundle && npm run build-bundle:min && npm run build-css && npm run build-css:min",
+    "build-css": "cp ./src/index.css dist/index.css",
+    "build-css:min": "postcss src/index.css --use cssnano > dist/index.min.css",
     "start": "vite",
     "preversion": "npm run lint",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md",
@@ -34,8 +35,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./*.css": [
+    "./css": [
       "./dist/index.css"
+    ],
+    "./min/css": [
+      "./dist/index.min.css"
     ],
     "./bundle": [
       "./dist/index.bundle.js"
@@ -55,8 +59,7 @@
     }
   },
   "dependencies": {
-    "@bicycle-codes/raf-scroll": "^0.0.2",
-    "@bicycle-codes/tonic": "^15.4.11"
+    "@bicycle-codes/raf-scroll": "^0.0.2"
   },
   "devDependencies": {
     "@bicycle-codes/tapzero": "^0.9.2",
@@ -64,17 +67,19 @@
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "auto-changelog": "^2.4.0",
-    "esbuild": "^0.21.0",
+    "cssnano": "^7.0.1",
+    "esbuild": "^0.21.3",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
     "gh-release": "^7.0.2",
+    "postcss-cli": "^11.0.0",
     "postcss-nesting": "^12.0.3",
     "tap-arc": "^1.2.2",
     "tape-run": "^11.0.0",
     "typescript": "^5.3.3",
     "vite": "^5.1.6"
   },
-  "author": "nichoth <nichoth@gmail.com> (https://nichoth.com)",
+  "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)",
   "license": "MIT",
   "types": "./dist/index.d.ts",
   "repository": {
