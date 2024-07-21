@@ -1,6 +1,6 @@
 # scroll progress
-![tests](https://github.com/bicycle-codes/scroll-progress/actions/workflows/nodejs.yml/badge.svg)
-[![types](https://img.shields.io/npm/types/@bicycle-codes/scroll-progress?style=flat-square)](README.md)
+![tests](https://github.com/substrate-system/scroll-progress/actions/workflows/nodejs.yml/badge.svg)
+[![types](https://img.shields.io/npm/types/@substrate-system/scroll-progress?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
 [![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
@@ -9,12 +9,12 @@ A progress bar that shows how far down the page you have scrolled, implemented a
 
 ## demonstration
 
-See [bicycle-codes.github.io/scroll-progress](https://bicycle-codes.github.io/scroll-progress/) for an example with the default CSS.
+See [substrate-system.github.io/scroll-progress](https://substrate-system.github.io/scroll-progress/) for an example with the default CSS.
 
 ## install
 
 ```sh
-npm i -S @bicycle-codes/scroll-progress
+npm i -S @substrate-system/scroll-progress
 ```
 
 ## use
@@ -24,17 +24,17 @@ You've got options.
 Use this with a bundler by using `import` syntax.
 
 ```js
-import '@bicycle-codes/scroll-progress'
-import '@bicycle-codes/scroll-progress/css'
+import '@substrate-system/scroll-progress'
+import '@substrate-system/scroll-progress/css'
 // or minified css
-import '@bicycle-codes/scroll-progress/min/css'
+import '@substrate-system/scroll-progress/min/css'
 ```
 
 ### pre-bundled
 This is the progress component and its one dependency, [raf-scroll](https://github.com/bicycle-codes/raf-scroll), combined into a single file. First copy the bundled file to a location that is accessible to your web server:
 
 ```sh
-cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.js ./public/scroll-progress.js
+cp ./node_modules/@substrate-system/scroll-progress/dist/index.bundle.js ./public/scroll-progress.js
 ```
 
 Then link to the bundled file, and you can use as an html element.
@@ -50,7 +50,7 @@ Then link to the bundled file, and you can use as an html element.
 Copy the bundled and minified file to a location that is accessible to your web server:
 
 ```sh
-cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.min.js
+cp ./node_modules/@substrate-system/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.min.js
 ```
 
 Link to the minified file in HTML:
@@ -75,7 +75,7 @@ Override the variable `--scroll-progress-color` to customize the color.
 
 ```js
 // index.js
-import { ScrollProgress } from '@bicycle-codes/scroll-progress'
+import { ScrollProgress } from '@substrate-system/scroll-progress'
 ```
 
 ```html
@@ -93,8 +93,8 @@ import { ScrollProgress } from '@bicycle-codes/scroll-progress'
 First copy a bundled file to a place where your webserver can access it.
 
 ```sh
-cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.js
-cp ./node_modules/@bicycle-codes/scroll-progress/dist/index.min.css ./public/scroll-progress.css
+cp ./node_modules/@substrate-system/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.js
+cp ./node_modules/@substrate-system/scroll-progress/dist/index.min.css ./public/scroll-progress.css
 ```
 
 Then include a script tag in HTML, and use the component like any other HTML element.

@@ -1,5 +1,5 @@
 {
-  "name": "@bicycle-codes/scroll-progress",
+  "name": "@substrate-system/scroll-progress",
   "version": "0.1.2",
   "description": "A webcomponent that shows scroll progress",
   "directories": {
@@ -83,7 +83,7 @@
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bicycle-codes/scroll-progress.git"
+    "url": "git+https://github.com/substrate-system/scroll-progress.git"
   },
   "keywords": [
     "scroll",
@@ -91,7 +91,7 @@
     "component"
   ],
   "bugs": {
-    "url": "https://github.com/bicycle-codes/scroll-progress/issues"
+    "url": "https://github.com/substrate-system/scroll-progress/issues"
   },
-  "homepage": "https://github.com/bicycle-codes/scroll-progress#readme"
+  "homepage": "https://github.com/substrate-system/scroll-progress#readme"
 }
