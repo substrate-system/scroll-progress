@@ -2,6 +2,7 @@
 ![tests](https://github.com/substrate-system/scroll-progress/actions/workflows/nodejs.yml/badge.svg)
 [![types](https://img.shields.io/npm/types/@substrate-system/scroll-progress?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
+[![install size](https://packagephobia.com/badge?p=@substrate-system/scroll-progress)](https://packagephobia.com/result?p=@substrate-system/scroll-progress)
 [![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
