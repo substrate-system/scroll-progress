@@ -1,11 +1,12 @@
 :root {
-    --scroll-progress-color: rgb(0, 255, 247);
+    --scroll-progress-color: lime;
     --scroll: 0;
 }
 
 .scroll-progress {
     min-height: 10px;
-    width: var(--scroll);
+    /* width: var(--scroll); */
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
