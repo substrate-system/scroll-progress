@@ -34,6 +34,8 @@ for an example with the default CSS.
 ```js
 // index.js
 import { ScrollProgress } from '@substrate-system/scroll-progress'
+
+ScrollProgress.define()
 ```
 
 ```html
@@ -70,7 +72,7 @@ logic.
 ```js
 import { define, TAG } from '@substrate-system/scroll-progress/client'
 
-define()
+define()  // must call CustomElementRegistry.define()
 
 // TAG is the element name
 const els = document.querySelector(TAG)
@@ -85,38 +87,34 @@ This exposes ESM and common JS via [package.json `exports` field](https://nodejs
 Import as normal.
 
 ```js
-import '@substrate-system/scroll-progress'
+// this is the full version, with rendering logic
+import { ScrollProgress } from '@substrate-system/scroll-progress'
 import '@substrate-system/scroll-progress/css'
 // or minified css
 import '@substrate-system/scroll-progress/min/css'
+
+// must define the component
+ScrollProgress.define()
 ```
 
 ### pre-bundled
 
 This is a bundle of the progress component and its one dependency,
-[raf-scroll](https://github.com/bicycle-codes/raf-scroll).
+[raf-scroll](https://github.com/substrate-system/raf-scroll).
+
+It is minifed, and can be directly included in the HTML. This will
+define the component with its default name.
+
+This is appropriate for SSR situations only. In the interest of keeping file
+sizes small, this cannot render.
+
+#### Copy
 
 ```sh
-cp ./node_modules/@substrate-system/scroll-progress/dist/index.min.js ./public/scroll-progress.min.js
+cp ./node_modules/@substrate-system/scroll-progress/dist/browser.min.js ./public/scroll-progress.min.js
 ```
 
-Then link to the bundled file, and you can use the html element.
-
-```html
-<body>
-    <scroll-progress></scroll-progress>
-</div>
-<script type="module" src="./scroll-progress.js"></script>
-```
-
-### pre-bundled + minifed
-Copy the bundled and minified file to a location that is accessible to your web server:
-
-```sh
-cp ./node_modules/@substrate-system/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.min.js
-```
-
-Link to the minified file in HTML:
+#### Link
 
 ```html
 <body>
@@ -125,46 +123,17 @@ Link to the minified file in HTML:
 <script type="module" src="./scroll-progress.min.js"></script>
 ```
 
-## css
+----------------------------------------------------------------------
+
+
+## CSS
+
 Override the variable `--scroll-progress-color` to customize the color.
 
 ```css
 .scroll-progress {
     --scroll-progress-color: pink;
 }
-```
-
-### pre-bundled
-First copy a bundled file to a place where your webserver can access it.
-
-```sh
-cp ./node_modules/@substrate-system/scroll-progress/dist/index.bundle.min.js ./public/scroll-progress.js
-cp ./node_modules/@substrate-system/scroll-progress/dist/index.min.css ./public/scroll-progress.css
-```
-
-Then include a script tag in HTML, and use the component like any other HTML element.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- link to the css -->
-    <link rel="stylesheet" href="./scroll-progress.css">
-    <title>Example</title>
-</head>
-
-<body>
-    <div id="root">
-        <scroll-progress></scroll-progress>
-    </div>
-
-    <!-- link to JS -->
-    <script type="module" src="./scroll-progress.js"></script>
-</body>
-</html>
 ```
 
 ## develop

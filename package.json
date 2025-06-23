@@ -22,12 +22,14 @@
     "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
     "build-esm:min": "esbuild ./src/*.ts --format=esm --keep-names --bundle --tsconfig=tsconfig.build.json --minify --out-extension:.js=.min.js --outdir=./dist --sourcemap",
     "build-example": "vite --base \"/scroll-progress/\" build",
-    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-esm:min && npm run build-cjs:min && npm run build-css && npm run build-css:min",
+    "module": "esbuild ./src/min.ts --bundle --minify --keep-names --tsconfig=tsconfig.build.json > ./dist/browser.min.js",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-esm:min && npm run build-cjs:min && npm run build-css && npm run build-css:min && npm run module",
     "build-css": "cp ./src/index.css dist/index.css",
     "build-css:min": "postcss src/index.css --use cssnano > dist/index.min.css",
     "start": "vite",
+    "toc": "markdown-toc --maxdepth 3 -i README.md",
     "preversion": "npm run lint",
-    "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md",
+    "version": "npm run toc && auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
     "postversion": "git push --follow-tags && npm publish",
     "prepublishOnly": "npm run build"
   },
@@ -40,6 +42,9 @@
       "import": "./dist/ssr.js",
       "require": "./dist/ssr.cjs"
     },
+    "./browser": [
+      "./dist/browser.min.js"
+    ],
     "./css": [
       "./dist/index.css"
     ],
@@ -77,6 +82,7 @@
     "esbuild": "^0.25.0",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
+    "markdown-toc": "^1.2.0",
     "postcss-cli": "^11.0.0",
     "postcss-nesting": "^13.0.0",
     "tap-spec": "^5.0.0",
