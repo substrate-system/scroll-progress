@@ -14,8 +14,9 @@
   "scripts": {
     "lint": "eslint \"./**/*.{ts,js}\"",
     "build-tests": "esbuild test/index.ts --target=es2020 --bundle --keep-names > test/test-bundle.js",
-    "test": "npm run lint && npm run build && npm run build-tests && npm run test-tape-run",
+    "test": "npm run build && npm run build-tests && npm run test-tape-run && npm run test-node",
     "test-tape-run": "cat test/index.html | tape-run --input=html --static=test | tap-spec",
+    "test-node": "esbuild ./test/node.ts --platform=node --bundle | node",
     "build-cjs": "esbuild src/index.ts --format=cjs --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.cjs --sourcemap",
     "build-esm": "tsc --project tsconfig.build.json",
     "build-bundle": "esbuild ./src/index.ts --keep-names --bundle --tsconfig=tsconfig.build.json --outfile=./dist/index.bundle.js",
@@ -62,7 +63,7 @@
     "@bicycle-codes/raf-scroll": "^0.0.2"
   },
   "devDependencies": {
-    "@bicycle-codes/tapzero": "^0.10.0",
+    "@substrate-system/tapzero": "^0.10.15",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "auto-changelog": "^2.4.0",
