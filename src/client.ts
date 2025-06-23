@@ -1,4 +1,4 @@
-import { rafScroll } from '@bicycle-codes/raf-scroll'
+import { rafScroll } from '@substrate-system/raf-scroll'
 
 export const TAG = 'scroll-progress'
 
