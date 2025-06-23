@@ -17,12 +17,12 @@
     "test": "npm run build && npm run build-tests && npm run test-tape-run && npm run test-node",
     "test-tape-run": "cat test/index.html | tape-run --input=html --static=test | tap-spec",
     "test-node": "esbuild ./test/node.ts --platform=node --bundle | node",
-    "build-cjs": "esbuild src/index.ts --format=cjs --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.cjs --sourcemap",
-    "build-esm": "tsc --project tsconfig.build.json",
-    "build-bundle": "esbuild ./src/index.ts --keep-names --bundle --tsconfig=tsconfig.build.json --outfile=./dist/index.bundle.js",
-    "build-bundle:min": "esbuild ./src/index.ts --keep-names --bundle --tsconfig=tsconfig.build.json --minify --outfile=./dist/index.bundle.min.js",
+    "build-cjs": "esbuild src/*.ts --format=cjs --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.cjs --sourcemap",
+    "build-cjs:min": "esbuild src/*.ts --format=cjs --minify --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.min.cjs --sourcemap",
+    "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
+    "build-esm:min": "esbuild ./src/*.ts --format=esm --keep-names --bundle --tsconfig=tsconfig.build.json --minify --out-extension:.js=.min.js --outdir=./dist --sourcemap",
     "build-example": "vite --base \"/scroll-progress/\" build",
-    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-bundle && npm run build-bundle:min && npm run build-css && npm run build-css:min",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-esm:min && npm run build-cjs:min && npm run build-css && npm run build-css:min",
     "build-css": "cp ./src/index.css dist/index.css",
     "build-css:min": "postcss src/index.css --use cssnano > dist/index.min.css",
     "start": "vite",
@@ -36,18 +36,24 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./ssr": {
+      "import": "./dist/ssr.js",
+      "require": "./dist/ssr.cjs"
+    },
     "./css": [
       "./dist/index.css"
     ],
     "./min/css": [
       "./dist/index.min.css"
     ],
-    "./bundle": [
-      "./dist/index.bundle.js"
-    ],
-    "./min": [
-      "./dist/index.bundle.min.js"
-    ],
+    "./min": {
+      "import": "./dist/index.min.js",
+      "require": "./dist/index.min.cjs"
+    },
+    "./min/*": {
+      "import": "./dist/*.min.js",
+      "require": "./dist/*.min.cjs"
+    },
     "./*": {
       "import": [
         "./dist/*.js",
@@ -60,7 +66,7 @@
     }
   },
   "dependencies": {
-    "@bicycle-codes/raf-scroll": "^0.0.2"
+    "@substrate-system/raf-scroll": "^0.0.2"
   },
   "devDependencies": {
     "@substrate-system/tapzero": "^0.10.15",
@@ -79,7 +85,7 @@
     "vite": "^6.0.1"
   },
   "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",

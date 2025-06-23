@@ -2,11 +2,13 @@ import { rafScroll } from '@bicycle-codes/raf-scroll'
 
 export const TAG = 'scroll-progress'
 
-export class ScrollProgressLight extends HTMLElement {
-    next:(()=>any)|null = null
-    ticking = false
+export class ScrollProgress extends HTMLElement {
+    private next:(()=>any)|null = null
+    private ticking = false
 
     static NAME = TAG
+
+    static define = define
 
     connectedCallback () {
         const offset = (window.scrollY /
@@ -45,12 +47,12 @@ export class ScrollProgressLight extends HTMLElement {
     }
 }
 
-export function define () {
+export function define (name?:string) {
     if (!window) return
     if (!('customElements' in window)) return
 
-    if (!isRegistered(ScrollProgressLight.NAME)) {
-        window.customElements.define('scroll-progress', ScrollProgressLight)
+    if (!isRegistered(name || TAG)) {
+        window.customElements.define(name || TAG, ScrollProgress)
     }
 }
 

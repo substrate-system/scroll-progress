@@ -1,7 +1,7 @@
-import { test } from '@bicycle-codes/tapzero'
-import { define, TAG } from '../src/index.js'
+import { test } from '@substrate-system/tapzero'
+import { ScrollProgress, TAG } from '../src/index.js'
 
-define()
+ScrollProgress.define()
 
 test('scroll progress element', async t => {
     document.body.innerHTML = `
