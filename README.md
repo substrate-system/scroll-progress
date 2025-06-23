@@ -15,7 +15,22 @@ This is implemented as a ["split component"](https://www.spicyweb.dev/web-compon
 meaning that it should be easy to render this to a string of HTML in node.
 
 <details><summary><h2>Contents</h2></summary>
+
 <!-- toc -->
+
+- [Install](#install)
+- [Demonstration](#demonstration)
+- [Example](#example)
+- [ssr](#ssr)
+  * [Client-side](#client-side)
+- [Modules](#modules)
+  * [Bundler](#bundler)
+  * [pre-bundled](#pre-bundled)
+- [CSS](#css)
+- [develop](#develop)
+
+<!-- tocstop -->
+
 </details>
 
 ## Install
