@@ -6,7 +6,11 @@
 [![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-A progress bar that shows how far down the page you have scrolled, implemented as a web component.
+A progress bar that shows how far down the page you have scrolled,
+as a web component.
+
+This is implemented as a ["split component"](https://www.spicyweb.dev/web-components-ssr-node/),
+meaning that it is possible to render this to a string of HTML in node.
 
 ## demonstration
 
