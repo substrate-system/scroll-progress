@@ -1,6 +1,6 @@
 {
   "name": "@substrate-system/scroll-progress",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A webcomponent that shows scroll progress",
   "directories": {
     "example": "example",
