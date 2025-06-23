@@ -6,10 +6,6 @@ export { TAG } from './client.js'
  * Full size component -- rendering and event listening.
  */
 export class ScrollProgress extends ScrollProgressLight {
-    constructor () {
-        super()
-    }
-
     connectedCallback () {
         super.connectedCallback()
 
